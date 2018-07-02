@@ -21,8 +21,8 @@
 
     <div id="buttons">
         <button id='start' onclick='start()'>Start</button> 
-        
-        [Pause] [Reset]
+        <button id='pause' onclick='pause()'>pause</button>
+         [Reset]
     </div>
 <audio id='roosterCrow' src='sounds\Rooster-SoundBible.com-1114473528.mp3'>Timer is done!</audio>
     <script>
@@ -49,6 +49,16 @@ function timesUp(){
 function start() {
     document.getElementById('start').disabled= true;
     setTimeout(tick, tickDelay);
+}
+
+function pause() {
+    document.getElementById('pause').disabled= true;
+    document.getElementById('start').disabled= false;
+    // call new function to stop timer
+}
+
+function pauseTimer() {
+    
 }
 
 function updateClock() {
