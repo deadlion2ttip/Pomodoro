@@ -29,8 +29,10 @@
 
 let secondsRemaining = 10;
 const tickDelay = 1000;
+let running = false
 
 function tick() {
+    if (running === true) {
     secondsRemaining -= 1;
     
     updateClock();
@@ -41,12 +43,15 @@ function tick() {
     else {
         timesUp()
     }
+    }
 }
 function timesUp(){
     document.getElementById('roosterCrow').play()
 }
 function start() {
+    running = true;
     document.getElementById('start').disabled= true;
+    document.getElementById('pause').disabled= false;
     setTimeout(tick, tickDelay);
 }
 
@@ -54,10 +59,11 @@ function pause() {
     document.getElementById('pause').disabled= true;
     document.getElementById('start').disabled= false;
     // call new function to stop timer
+    pauseTimer();
 }
 
 function pauseTimer() {
-    
+    running = false;
 }
 
 function updateClock() {
