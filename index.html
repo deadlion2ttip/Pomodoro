@@ -45,20 +45,40 @@ function tick() {
     }
     }
 }
-function timesUp(){
-    document.getElementById('roosterCrow').play()
+function disablePause() {
+    document.getElementById('pause').disabled= true;
 }
+
+function enablePause() {
+    document.getElementById('pause').disabled= false;
+}
+
+function disableStart() {
+    document.getElementById('start').disabled= true;
+}
+
+function enableStart() {
+    document.getElementById('start').disabled= false;
+}
+function timesUp(){
+    disablePause();
+    document.getElementById('roosterCrow').play();
+    crushTomato();
+}
+function crushTomato(){
+    document.getElementById('tomato').innerHTML = "<img src='deadTomato.JPG' alt='A tomato smashed on asphault'/>"
+}
+
 function start() {
     running = true;
-    document.getElementById('start').disabled= true;
-    document.getElementById('pause').disabled= false;
+    disableStart();
+    enablePause();
     setTimeout(tick, tickDelay);
 }
 
 function pause() {
-    document.getElementById('pause').disabled= true;
-    document.getElementById('start').disabled= false;
-    // call new function to stop timer
+    disablePause();
+    enableStart();
     pauseTimer();
 }
 
