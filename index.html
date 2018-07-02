@@ -19,7 +19,7 @@
         
     </div>
     <label for='timeSelector'>Set timer for (in minutes):</label>
-    <input id='timeSelector' type="number" min='1' value="1" placeholder="minutes">
+    <input id='timeSelector' type="number" min='1' value="25" placeholder="minutes">
 
     <div id="buttons">
         <button id='start' onclick='start()'>Start</button> 
@@ -74,8 +74,8 @@ function crushTomato(){
 }
 
 function start() {
-        secondsRemaining = document.getElementById('timeSelector').value*60
-        updateClock()
+    secondsRemaining = document.getElementById('timeSelector').value*60
+    updateClock()
     running = true;
     disableStart();
     enablePause();
@@ -110,7 +110,7 @@ function updateClock() {
 }
 
 
-updateClock();
+// updateClock();
 
     </script>
 </body>
