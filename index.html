@@ -24,10 +24,10 @@
         
         [Pause] [Reset]
     </div>
-
+<audio id='roosterCrow' src='sounds\Rooster-SoundBible.com-1114473528.mp3'>Timer is done!</audio>
     <script>
 
-let secondsRemaining = 1500;
+let secondsRemaining = 10;
 const tickDelay = 1000;
 
 function tick() {
@@ -39,9 +39,15 @@ function tick() {
     if (secondsRemaining > 0) {
         setTimeout(tick, tickDelay);
     }
+    else {
+        timesUp()
+    }
 }
-
+function timesUp(){
+    document.getElementById('roosterCrow').play()
+}
 function start() {
+    document.getElementById('start').disabled= true;
     setTimeout(tick, tickDelay);
 }
 
