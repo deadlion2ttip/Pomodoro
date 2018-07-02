@@ -2,10 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>
 
+    </title>
     <style>
     #tomato {
         font-size: 180px;
+    }
+    title{
+        color:red;
     }
     </style>
 </head>
@@ -68,6 +73,8 @@ function timesUp(){
     disablePause();
     document.getElementById('roosterCrow').play();
     crushTomato();
+    title = document.getElementsByTagName('title')[0];
+    title.textContent = '🍅';
 }
 function crushTomato(){
     document.getElementById('tomato').innerHTML = "<img src='deadTomato.JPG' alt='A tomato smashed on asphault'/>"
@@ -101,12 +108,14 @@ function pauseTimer() {
 }
 
 function updateClock() {
+    title = document.getElementsByTagName('title')[0]
     minutesDisplayed = Math.floor(secondsRemaining/60);
     secondsDisplayed = secondsRemaining%60;
     secondsDisplayed = (secondsDisplayed < 10) ? (secondsDisplayed = '0'+ secondsDisplayed) : secondsDisplayed
 
     let clock = document.getElementById('clock');
     clock.textContent = minutesDisplayed + ':' + secondsDisplayed;
+    title.textContent = '🍅' + minutesDisplayed + ':' + secondsDisplayed;
 }
 
 
