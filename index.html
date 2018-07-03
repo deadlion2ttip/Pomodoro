@@ -6,9 +6,13 @@
 
     </title>
     <style>
+    #tomatoPic {
+        height: 175px;
+        width: 175px;
+    }
     #tomato {
-        font-size: 225px;
-        min-height: 600px;
+        font-size: 175px;
+        min-height: 500px;
         overflow:visible;
         z-index: -1;
     }
@@ -27,12 +31,17 @@
         justify-content: space-around;
         margin:30px;
     }
+    button{
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 10%;
+    }
     </style>
 </head>
 
 <body>
     <div id="tomato">
-        🍅
+        <img id='tomatoPic' src='tomato.JPG' alt='a ripe tomato'>
     </div>
 
     <div id="clock">
@@ -123,8 +132,8 @@ function reset() {
     enableTimeSelect();
     secondsRemaining = document.getElementById('timeSelector').value*60;
     running = false;  
+    document.getElementById('tomato').innerHTML = "<img id='tomatoPic' src='tomato.JPG' alt='a ripe tomato'>";
     updateClock();
-    document.getElementById('tomato').innerHTML = "🍅";
 }
 
 function pauseTimer() {
@@ -140,14 +149,14 @@ function updateClock() {
     let clock = document.getElementById('clock');
     clock.textContent = minutesDisplayed + ':' + secondsDisplayed;
     title.textContent = '🍅' + minutesDisplayed + ':' + secondsDisplayed;
-    let tomato = document.getElementById('tomato');
-    tomato.style = 'font-size: ' + (100 + minutesDisplayed*5) +'px;'
+    let tomatoPic = document.getElementById('tomatoPic');
+    tomatoPic.style = 'height: ' + (100 + minutesDisplayed*3) +'px; width: ' + (100 + minutesDisplayed*3) +'px;'
 }
 
 function growTomato() {
     let minutes= document.getElementById('timeSelector').value;
-    let tomato = document.getElementById('tomato');
-    tomato.style = 'font-size: ' + (100 + minutes*5) +'px;'
+    let tomatoPic = document.getElementById('tomatoPic');
+    tomatoPic.style = 'height: ' + (100 + minutes*3) +'px; width: ' + (100 + minutes*3) +'px;'
 }
 
     </script>
