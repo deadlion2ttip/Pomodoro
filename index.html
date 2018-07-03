@@ -9,8 +9,13 @@
     #tomatoPic {
         height: 175px;
         width: 175px;
+        max-width: 800px;
+        max-height: 800px;
     }
     #tomato {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         font-size: 175px;
         min-height: 500px;
         overflow:visible;
@@ -62,7 +67,6 @@
 let secondsRemaining = 600;
 const tickDelay = 1000;
 let running = false;
-document.getElementById('timeSelector').value;
 
 function tick() {
     if (running === true) {
@@ -111,7 +115,7 @@ function crushTomato(){
 }
 
 function start() {
-    secondsRemaining = document.getElementById('timeSelector').value*60
+    secondsRemaining = Math.ceil(document.getElementById('timeSelector').value*60)
     updateClock()
     running = true;
     disableStart();
@@ -130,7 +134,7 @@ function pause() {
 function reset() {
     enableStart();
     enableTimeSelect();
-    secondsRemaining = document.getElementById('timeSelector').value*60;
+    secondsRemaining = Math.ceil(document.getElementById('timeSelector').value*60);
     running = false;  
     document.getElementById('tomato').innerHTML = "<img id='tomatoPic' src='tomato.JPG' alt='a ripe tomato'>";
     updateClock();
