@@ -7,10 +7,25 @@
     </title>
     <style>
     #tomato {
-        font-size: 180px;
+        font-size: 225px;
+        min-height: 600px;
+        overflow:visible;
+        z-index: -1;
     }
-    title{
-        color:red;
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #clock{
+        font-size: 45pt;
+        margin: 20px;
+    }
+    #buttons{
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        margin:30px;
     }
     </style>
 </head>
@@ -24,7 +39,7 @@
         
     </div>
     <label for='timeSelector'>Set timer for (in minutes):</label>
-    <input id='timeSelector' type="number" min='1' value="25" placeholder="minutes">
+    <input id='timeSelector' type="number" min='1' value="25" onkeyup= 'growTomato()' onclick='growTomato()' placeholder="minutes">
 
     <div id="buttons">
         <button id='start' onclick='start()'>Start</button> 
@@ -53,6 +68,12 @@ function tick() {
         timesUp()
     }
     }
+}
+function disableTimeSelect(){
+    document.getElementById('timeSelector').disabled= true;
+}
+function enableTimeSelect(){
+    document.getElementById('timeSelector').disabled= false;
 }
 function disablePause() {
     document.getElementById('pause').disabled= true;
@@ -86,6 +107,7 @@ function start() {
     running = true;
     disableStart();
     enablePause();
+    disableTimeSelect();
     setTimeout(tick, tickDelay);
 }
 
@@ -93,10 +115,12 @@ function pause() {
     disablePause();
     enableStart();
     pauseTimer();
+    enableTimeSelect();
 }
 
 function reset() {
     enableStart();
+    enableTimeSelect();
     secondsRemaining = document.getElementById('timeSelector').value*60;
     running = false;  
     updateClock();
@@ -116,10 +140,15 @@ function updateClock() {
     let clock = document.getElementById('clock');
     clock.textContent = minutesDisplayed + ':' + secondsDisplayed;
     title.textContent = '🍅' + minutesDisplayed + ':' + secondsDisplayed;
+    let tomato = document.getElementById('tomato');
+    tomato.style = 'font-size: ' + (100 + minutesDisplayed*5) +'px;'
 }
 
-
-// updateClock();
+function growTomato() {
+    let minutes= document.getElementById('timeSelector').value;
+    let tomato = document.getElementById('tomato');
+    tomato.style = 'font-size: ' + (100 + minutes*5) +'px;'
+}
 
     </script>
 </body>
