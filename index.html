@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>
-
+        Pomodoro Timer
     </title>
     <style>
+    body {
+        border: 2px solid grey;
+        border-radius: 15%;
+        width:75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
     #tomatoPic {
         height: 175px;
         width: 175px;
@@ -152,7 +159,7 @@ function updateClock() {
 
     let clock = document.getElementById('clock');
     clock.textContent = minutesDisplayed + ':' + secondsDisplayed;
-    title.textContent = '🍅' + minutesDisplayed + ':' + secondsDisplayed;
+    title.textContent = minutesDisplayed + ':' + secondsDisplayed;
     let tomatoPic = document.getElementById('tomatoPic');
     tomatoPic.style = 'height: ' + (100 + minutesDisplayed*3) +'px; width: ' + (100 + minutesDisplayed*3) +'px;'
 }
