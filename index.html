@@ -80,13 +80,12 @@ function tick() {
     secondsRemaining -= 1;
     
     updateClock();
-
+}
     if (secondsRemaining > 0) {
         setTimeout(tick, tickDelay);
     }
     else {
         timesUp()
-    }
     }
 }
 function disableTimeSelect(){
@@ -132,23 +131,30 @@ function start() {
 }
 
 function pause() {
-    disablePause();
-    enableStart();
     pauseTimer();
-    enableTimeSelect();
 }
 
 function reset() {
     enableStart();
+    disablePause();
+    document.getElementById('pause').innerText = 'pause'
     enableTimeSelect();
     secondsRemaining = Math.ceil(document.getElementById('timeSelector').value*60);
     running = false;  
-    document.getElementById('tomato').innerHTML = "<img id='tomatoPic' src='tomato.JPG' alt='a ripe tomato'>";
+    document.getElementById('tomato').innerHTML = "<img id='tomatoPic' src='tomato.jpg' alt='a ripe tomato'>";
     updateClock();
 }
 
 function pauseTimer() {
+    if (running == true){
     running = false;
+    document.getElementById('pause').innerText = 'resume'
+    enableTimeSelect()
+    } else if (running == false){
+        running = true;
+        document.getElementById('pause').innerText = 'pause'
+        disableTimeSelect()
+    }
 }
 
 function updateClock() {
@@ -169,7 +175,7 @@ function growTomato() {
     let tomatoPic = document.getElementById('tomatoPic');
     tomatoPic.style = 'height: ' + (100 + minutes*3) +'px; width: ' + (100 + minutes*3) +'px;'
 }
-
+disablePause()
     </script>
 </body>
 </html>
